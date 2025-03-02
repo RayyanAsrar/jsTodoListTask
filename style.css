@@ -1,0 +1,54 @@
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f8f9fa;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+li input {
+    border: none;
+    background: transparent;
+    flex-grow: 1;
+    font-size: 16px;
+    padding: 5px;
+}
+
+li input:focus {
+    outline: none;
+    border-bottom: 1px solid #007bff;
+}
+
+
+li button {
+    margin-left: 8px;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+li .edit-btn {
+    background-color: #ffc107;
+    color: white;
+}
+
+li .remove-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+li button:hover {
+    opacity: 0.8;
+}
