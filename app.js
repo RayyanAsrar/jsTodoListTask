@@ -65,6 +65,17 @@ let todoValue = document.getElementById("todoValue");
 let addBtn = document.getElementById("addBtn");
 let list = document.getElementById("list");
 let arr = [];
+
+try {
+  arr = JSON.parse(localStorage.getItem("tasks")) || [];
+} catch (error) {
+  arr = []; 
+}
+
+function saveToLocalStorage() {
+    localStorage.setItem("tasks", JSON.stringify(arr));
+  }
+  
 function RenderList() {
   for (let i = 0; i < arr.length; i++) {
     list.innerHTML += `<li>
@@ -72,29 +83,35 @@ function RenderList() {
    <button onclick="editTodo(${i})" >Edit </button>
      <button onclick="removeTodo(${i})">Remove</button>
    </li>`;
+//    localStorage.setItem("task", JSON.stringify(arr));
     // console.log(arr);
   }
 }
 function addPost() {
-  list.innerHTML = "";
-  if (todoValue.value !== "") {
+    if (todoValue.value !== "") {
+      list.innerHTML = "";
     arr.push(todoValue.value);
     // console.table(arr);
     RenderList();
+    saveToLocalStorage()
+    todoValue.value = "";
   } else {
-    alert("bhia kuch likh lo andar ");
+    alert("bhia kuch likh lo andar ");r
+    
   }
-  todoValue.value = "";
 }
 function removeTodo(index) {
   list.innerHTML = "";
   arr.splice(index, 1);
 
   RenderList();
+  saveToLocalStorage()
 }
 function editTodo(index){
     list.innerHTML=""
     let newVal= prompt('han bhai kia haal chal hukum karo ')
     arr.splice(index,1,newVal)
     RenderList()
+    saveToLocalStorage()
 }
+RenderList()
